@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100%;
+    color: #3d3d3d;
+}
+
+h1 {
+    position: absolute;
+    margin-top: 0;
+    top: 10px;
+    left: 15px;
+    font-size: 1.5em;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 10px 15px;
+    background: rgba(256, 256, 256, .3);
+    box-shadow: 0 1px 3px rgb(0, 128, 0);
+    border: 1px solid #008000;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: .04em;
+
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Style button to show page layers. */
+#info-button {
+    padding: 8px 5px;
+    font-size: 0.9em;
+    font-weight: bolder;
+    background: rgba(256, 256, 256, .3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    border: 1px solid #008000;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+#info-button:active {
+    border: 1px solid #008000;
+    box-shadow: 0 2px 5px rgb(0, 128, 0);
+}
+
+/* Make element center in frame and increase text size. */
+#about {
+    display: none;
+    position: absolute;
+    font-size: 1.4em;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 15px;
+    /* Add styles to match Leaflet UI elements */
+    background: rgba(256, 256, 256, .5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 500;
+    overflow: scroll;
+}
+
+/* This will tint out all elements below it in z order. */
+#background {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(256, 256, 256, .8);
+    z-index: 100;
+}
+
+/* Use the conventional GUI X to close modal. */
+#x {
+    float: right;
+    font-size: 1.4em;
+    color: #3d3d3d;
+    cursor: pointer;
+}
+
+#x:hover {
+    color: #969696;
+}
+
+#x:active {
+    color: #ff0000;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+p {
+    font-size: .9em;
+    line-height: 1.5em;
+}
+
+a {
+    color: #005daa;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Leaflet popup styles */
+.leaflet-popup-content {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.1em;
+}
+
+#ui-controls {
+    width: 500px;
+    font-size: 1em;
+    font-family: 'Quicksand', sans-serif;
+    padding: 10px 15px;
+    background: rgba(256, 256, 256, .3);
+    box-shadow: 0 1px 3px rgb(0, 128, 0);
+    border: 1px solid #008000;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 35%;
+}
+
+#ui-controls .min {
+    float: left;
+}
+
+#ui-controls .max {
+    float: right;
+}
+
+.year-slider {
+    width: 100%;
+}
+
+label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.legend {
+    padding: 6px 8px;
+    font-size: 1em;
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 250px;
+}
+
+.legend h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1em;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.legend h3 span {
+    font-size: 1.3em;
+    margin: 0 20px 0 0;
+}
+
+.legend ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 12px 4px 0;
+}
+
+.legend li {
+    height: 22px;
+}
+
+.legend span {
+    width: 30px;
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+}
+
+/* 
+When browser is 900px high or less
+make the font a little smaller.
+ */
+@media screen and (max-height: 400px) {
+
+    #about p,
+    #about h2 {
+        font-size: .6em;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    #about h2 {
+        font-size: 1em;
+    }
+
+    .leaflet-popup-content {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.9em;
+    }
+}
+
+/* Don't display info block when window is very small */
+@media screen and (max-height: 200px) {
+    #about {
+        display: none;
+    }
+}
