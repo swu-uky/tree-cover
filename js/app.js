@@ -182,14 +182,12 @@
     // Add legend item for missing data
     $('.legend ul').append(`<li><span style="background:lightgray"></span>
             Data not available</li>`)
-    // close legend unordered list
-    legend.append("</ul>");
 
+    legend.append("</ul>");
   }
 
   function createSliderUI(dataLayer, colorize) {
 
-    // select the form element
     $(".year-slider")
       .on("input change", function () { // when user changes
         const currentYear = this.value; // update the year
@@ -197,6 +195,6 @@
         updateMap(dataLayer, colorize, currentYear); // update timestamp in legend heading
       });
 
-  } // end createSliderUI()
+  }
 
 })();
