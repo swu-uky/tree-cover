@@ -197,6 +197,13 @@ label {
     margin-right: 10px;
 }
 
+.dropdown {
+    position: absolute;
+    right: 1em;
+    top: 35%;
+    z-index: 20;
+}
+
 /* 
 When browser is 900px high or less
 make the font a little smaller.
