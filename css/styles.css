@@ -10,13 +10,14 @@ h1 {
     position: absolute;
     margin-top: 0;
     top: 10px;
-    left: 15px;
+    left: 45%;
     font-size: 1.5em;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     letter-spacing: .04em;
     padding: 10px 15px;
-    background: rgba(256, 256, 256, .3);
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
     box-shadow: 0 1px 3px rgb(0, 128, 0);
     border: 1px solid #008000;
     border-radius: 5px;
@@ -27,7 +28,6 @@ h2 {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.2em;
     letter-spacing: .04em;
-
 }
 
 #map {
@@ -41,9 +41,10 @@ h2 {
 /* Style button to show page layers. */
 #info-button {
     padding: 8px 5px;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: bolder;
-    background: rgba(256, 256, 256, .3);
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     border: 1px solid #008000;
     border-radius: 5px;
@@ -52,11 +53,6 @@ h2 {
     left: 15px;
     z-index: 9999;
     cursor: pointer;
-}
-
-#info-button:active {
-    border: 1px solid #008000;
-    box-shadow: 0 2px 5px rgb(0, 128, 0);
 }
 
 /* Make element center in frame and increase text size. */
@@ -98,12 +94,7 @@ h2 {
 }
 
 #x:hover {
-    color: #969696;
-}
-
-#x:active {
-    color: #ff0000;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    color: #008000;
 }
 
 p {
@@ -131,7 +122,8 @@ a:hover {
     font-size: 1em;
     font-family: 'Quicksand', sans-serif;
     padding: 10px 15px;
-    background: rgba(256, 256, 256, .3);
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
     box-shadow: 0 1px 3px rgb(0, 128, 0);
     border: 1px solid #008000;
     border-radius: 5px;
@@ -162,13 +154,14 @@ label {
     font-size: 1em;
     background: rgba(75, 75, 75, 0.8);
     color: whitesmoke;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgb(0, 128, 0);
+    border: 1px solid #008000;
     border-radius: 5px;
     width: 250px;
 }
 
 .legend h3 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
     line-height: 1em;
     color: whitesmoke;
@@ -176,7 +169,7 @@ label {
 }
 
 .legend h3 span {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin: 0 20px 0 0;
 }
 
@@ -197,11 +190,48 @@ label {
     margin-right: 10px;
 }
 
+.world {
+    padding: 6px 8px;
+    font-size: 1em;
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
+    box-shadow: 0 1px 3px rgb(0, 128, 0);
+    border: 1px solid #008000;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.world h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 2.4em;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.world h3 span {
+    font-size: 1.2em;
+    margin: 0 20px 0 0;
+}
+
+.world ul {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 2.4em;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.world ul span {
+    font-size: 1.2em;
+    margin: 0 20px 0 0;
+}
+
 .dropdown {
     position: absolute;
     right: 1em;
     top: 35%;
-    z-index: 20;
+    z-index: 150;
 }
 
 /* 

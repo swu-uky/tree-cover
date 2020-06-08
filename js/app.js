@@ -7,55 +7,52 @@
     zoomControl: false
   }
 
-  // create the Leaflet map
   const map = L.map('map', options);
 
-  // request tiles and add to map
   const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19,
   }).addTo(map);
 
-  // create a Leaflet control for the legend
   const legendControl = L.control({
     position: 'topright'
   });
 
-  // when the control is added to the map
   legendControl.onAdd = function (map) {
 
-    // create a new division element with class of 'legend' and return
+    // Create a new division element with class of 'legend' and return
     const legend = L.DomUtil.create('div', 'legend');
     return legend;
-
   };
-
-  // add the legend control to the map
   legendControl.addTo(map);
 
-  // create Leaflet control for the slider
+  const worldControl = L.control({
+    position: 'topleft'
+  });
+
+  worldControl.onAdd = function (map) {
+
+    // Creat another div element for keeping track of world data
+    const world = L.DomUtil.create('div', 'world');
+    return world;
+  };
+  worldControl.addTo(map);
+
+  // Create Leaflet control for the slider
   const sliderControl = L.control({
     position: 'bottomleft'
   });
 
-  // when added to the map
   sliderControl.onAdd = function (map) {
 
-    // select an existing DOM element with an id of "ui-controls"
     const slider = L.DomUtil.get("ui-controls");
 
-    // disable scrolling of map while using controls
     L.DomEvent.disableScrollPropagation(slider);
-
-    // disable click events while using controls
     L.DomEvent.disableClickPropagation(slider);
 
-    // return the slider from the onAdd method
     return slider;
   }
-
-  // add the control to the map
   sliderControl.addTo(map);
 
   $.getJSON("data/countries.json", function (countries) {
@@ -93,7 +90,9 @@
 
       for (const prop in country.properties) {
         if (prop != "COUNTRY") {
-          rates.push(Number(country.properties[prop]));
+          if (Number(country.properties[prop]) >= 0) {
+            rates.push(Number(country.properties[prop]));
+          }
         }
       }
     });
@@ -101,11 +100,11 @@
     var breaks = chroma.limits(rates, 'q', 5);
     var colorize = chroma.scale(chroma.brewer.Greens).classes(breaks).mode('lab');
 
-    drawMap(countries, colorize);
+    drawMap(countries, colorize, data); // Taking 'data' along to retain world information
     drawLegend(breaks, colorize);
   }
 
-  function drawMap(countries, colorize) {
+  function drawMap(countries, colorize, data) {
 
     const dataLayer = L.geoJson(countries, {
 
@@ -142,7 +141,7 @@
     map.setZoom(map.getZoom() - .2);
 
     updateMap(dataLayer, colorize, '1990');
-    createSliderUI(dataLayer, colorize);
+    createSliderUI(dataLayer, colorize, data); // Taking 'data' along to retain world information
   }
 
   function updateMap(dataLayer, colorize, currentYear) {
@@ -166,6 +165,8 @@
 
   function drawLegend(breaks, colorize) {
 
+    const world = $('.world').html("<h3>Worldwide Cover in <span>1990</span>:</h3><ul><span>31.80057187</span>%</ul>");
+
     const legend = $('.legend').html("<h3><span>1990</span>Tree Cover Percentages</h3><ul>");
 
     for (let i = 0; i < breaks.length - 1; i++) {
@@ -182,19 +183,67 @@
     // Add legend item for missing data
     $('.legend ul').append(`<li><span style="background:lightgray"></span>
             Data not available</li>`)
-
     legend.append("</ul>");
   }
 
-  function createSliderUI(dataLayer, colorize) {
+  function createSliderUI(dataLayer, colorize, data) {
 
     $(".year-slider")
-      .on("input change", function () { // when user changes
-        const currentYear = this.value; // update the year
-        $('.legend h3 span').html(currentYear); // update the map with current timestamp
-        updateMap(dataLayer, colorize, currentYear); // update timestamp in legend heading
+      .on("input change", function () { // When user changes
+        const currentYear = this.value; // Update the year
+        $('.world h3 span').html(currentYear);
+        $('.world ul span').html(data.data[252][currentYear]); // Data finally used here!
+        $('.legend h3 span').html(currentYear);
+        updateMap(dataLayer, colorize, currentYear);
       });
+  }
 
+  /* --------------- Toggle on/off about content ---------------  */
+  // Set initial state of button
+  var clicked = false
+
+  var button = document.getElementById("info-button");
+  var about = document.getElementById('about');
+  var background = document.getElementById('background');
+  var close = document.getElementById('x');
+
+  // When the pointing device presses down, e.g., a mouse, tablet pen, finger tip
+  button.addEventListener("pointerdown", function () {
+    button.style.background = 'rgb(0,128,0)'
+  })
+
+  // Below is traditional mouseover events
+  button.addEventListener("mouseover", function () {
+    button.style.background = 'rgb(0,128,0)'
+  })
+  button.addEventListener("mouseout", function () {
+    if (!clicked) {
+      button.style.background = 'rgba(75, 75, 75, 0.8)'
+    }
+  })
+
+  // Swapping states
+  button.addEventListener("click", swapItUp)
+  background.addEventListener("click", swapItUp)
+  x.addEventListener("click", swapItUp)
+
+  // This prevents the click from propagating through element and activating other events
+  about.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+
+  function swapItUp() {
+    if (clicked) {
+      about.style.display = 'none';
+      background.style.display = 'none';
+      button.style.background = 'rgb(0,128,0)'
+    } else {
+      about.style.height = '60vh';
+      about.style.display = 'inherit'
+      background.style.display = 'inherit'
+      button.style.background = 'rgb(0,128,0)'
+    }
+    clicked = !clicked
   }
 
 })();

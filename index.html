@@ -2,13 +2,13 @@
 <html>
 
 <head>
-	<meta charset=utf-8 />
-	<title>Global Tree Cover</title>
-	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta charset=utf-8 />
+  <title>Global Tree Cover</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 
@@ -17,8 +17,8 @@
 <body>
 
   <h1>Global Tree Cover</h1>
-  
-	<div id="info-button">Information</div>
+
+  <div id="info-button">Information</div>
 
   <div id='map'></div>
   <div id="ui-controls">
@@ -28,22 +28,22 @@
       <input type="range" min="1990" , max="2015" , value="1990" , step="1" , class="year-slider">
     </label>
   </div>
-  
-	<div id='background'>
-		<div id="about">
+
+  <div id='background'>
+    <div id="about">
       <span id="x">&times;</span>
-      
-			<h2>Info</h2>
+
+      <h2>Info</h2>
       <p>Info goes here</p>
-      
+
       <h2>About</h2>
-      <p>Tree cover data for this map taken from <a href="https://ourworldindata.org/forests">Our World in Data</a>.</p>
-			<p>Country data for this map courtesy of <a href="https://datahub.io/core/geo-countries">DataHub</a>.</p>
-			<p>Map Authored By: Shan Huan Wu</p>
-			<p>See my projects on GitHub: <a href="https://github.com/swu-uky">swu-uky</a></p>
-			<p>Follow me on Instagram: <a href="https://instagram.com/meadowofhay">@meadowofhay</a></p>
-		</div>
-	</div>
+      <p>Tree cover data for this map taken from <a href="https://ourworldindata.org/forests">Our World in Data</a>.<br>
+        Country data for this map courtesy of <a href="https://datahub.io/core/geo-countries">DataHub</a>.</p>
+      <p>Map Authored By: Shan Huan Wu<br>
+        See my projects on GitHub: <a href="https://github.com/swu-uky">swu-uky</a><br>
+        Follow me on Instagram: <a href="https://instagram.com/meadowofhay">@meadowofhay</a></p>
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
