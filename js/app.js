@@ -206,7 +206,7 @@
       });
   }
 
-  /* --------------- Toggle on/off about content ---------------  */
+  /* --------------- Toggle on/off Information ---------------  */
   // Set initial state of button
   var clicked = false
 
