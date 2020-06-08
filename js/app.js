@@ -154,8 +154,17 @@
         fillColor: colorize(Number(props[currentYear]))
       })
 
-      var popup = `<b>${props["COUNTRY"]}</b><br>
-          ${props[currentYear]}%`;
+      var popup = '';
+
+      if (props[currentYear] == "No Data") {
+        popup = `<b>${props["COUNTRY"]}</b><br>
+          No Data for ${currentYear}`;
+      } else if (props[currentYear] == undefined) {
+        popup = "No Data";
+      } else {
+        popup = `<b>${props["COUNTRY"]}</b><br>
+        ${props[currentYear]}%`;
+      }
 
       layer.bindPopup(popup, {
         sticky: true
@@ -181,8 +190,7 @@
     }
 
     // Add legend item for missing data
-    $('.legend ul').append(`<li><span style="background:lightgray"></span>
-            Data not available</li>`)
+    $('.legend ul').append(`<li><span style="background:lightgray"></span>No Data</li>`)
     legend.append("</ul>");
   }
 
@@ -192,7 +200,7 @@
       .on("input change", function () { // When user changes
         const currentYear = this.value; // Update the year
         $('.world h3 span').html(currentYear);
-        $('.world ul span').html(data.data[252][currentYear]); // Data finally used here!
+        $('.world ul span').html(data.data[253][currentYear]); // Data finally used here!
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
