@@ -66,9 +66,10 @@ h2 {
     transform: translate(-50%, -50%);
     padding: 0 15px;
     /* Add styles to match Leaflet UI elements */
-    background: rgba(256, 256, 256, .5);
+    background: rgba(75, 75, 75, 0.8);
+    color: whitesmoke;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    border: 1px solid #ddd;
+    border: 1px solid #008000;
     border-radius: 5px;
     z-index: 500;
     overflow: scroll;
@@ -89,12 +90,12 @@ h2 {
 #x {
     float: right;
     font-size: 1.4em;
-    color: #3d3d3d;
+    color: whitesmoke;
     cursor: pointer;
 }
 
 #x:hover {
-    color: #008000;
+    color: #ADFF2F;
 }
 
 p {
@@ -103,7 +104,7 @@ p {
 }
 
 a {
-    color: #005daa;
+    color: #ADFF2F;
     text-decoration: none;
 }
 
