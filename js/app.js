@@ -4,6 +4,7 @@
     center: [40, 34],
     zoom: 2,
     zoomSnap: .1,
+    zoomDelta: 0.2,
     zoomControl: false
   }
 
