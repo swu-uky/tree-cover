@@ -244,7 +244,7 @@
     if (clicked) {
       about.style.display = 'none';
       background.style.display = 'none';
-      button.style.background = 'rgb(0,128,0)'
+      button.style.background = 'rgba(75, 75, 75, 0.8)'
     } else {
       about.style.height = '60vh';
       about.style.display = 'inherit'
