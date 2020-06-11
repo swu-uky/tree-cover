@@ -14,7 +14,7 @@
     subdomains: 'abcd',
     maxZoom: 19,
     noWrap: true
-  }).addTo(map);
+  }) //.addTo(map);
 
   const legendControl = L.control({
     position: 'topright'
