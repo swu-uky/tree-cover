@@ -1,8 +1,21 @@
 (function () {
 
+  const robinson = {
+    epsg: 'EPSG:54030',
+    def: '+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs',
+    resolutions: [32568, 16284, 8192, 4096, 2048],
+    origin: [0, 0]
+   }
+
+  const crs = new L.Proj.CRS(robinson.epsg, robinson.def, { 
+    resolutions: robinson.resolutions, 
+    origin: robinson.origin
+   })
+
   const options = {
+    crs: crs,
     center: [40, 34],
-    zoom: 2,
+    zoom: 5,
     zoomSnap: .1,
     zoomDelta: 0.2,
     zoomControl: false
