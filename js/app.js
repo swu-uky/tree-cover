@@ -201,6 +201,12 @@
         const currentYear = this.value; // Update the year
         $('.world h3 span').html(currentYear);
         $('.world ul span').html(data.data[253][currentYear]); // Data finally used here!
+        // Data is not duplicated but merely made accessible to this function
+        // by scoping the variable inside a chain of functions.
+        // We could scope the data variable to the top-level of this self-invoking function
+        // by returning the data from the function in which it was made. 
+        // After you get a beta version working, create a new branch 
+        // and experiment with different solutions.
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
