@@ -1,9 +1,23 @@
 (function () {
 
+  const robinson = {
+    epsg: 'EPSG:54030',
+    def: '+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs',
+    resolutions: [32568, 16284, 8192, 4096, 2048],
+    origin: [0, 0]
+   }
+
+  const crs = new L.Proj.CRS(robinson.epsg, robinson.def, { 
+    resolutions: robinson.resolutions, 
+    origin: robinson.origin
+   })
+
   const options = {
+    crs: crs,
     center: [40, 34],
-    zoom: 2,
+    zoom: 5,
     zoomSnap: .1,
+    zoomDelta: 0.2,
     zoomControl: false
   }
 
@@ -13,7 +27,8 @@
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19,
-  }).addTo(map);
+    noWrap: true
+  }) //.addTo(map);
 
   const legendControl = L.control({
     position: 'topright'
@@ -201,6 +216,12 @@
         const currentYear = this.value; // Update the year
         $('.world h3 span').html(currentYear);
         $('.world ul span').html(data.data[253][currentYear]); // Data finally used here!
+        // Data is not duplicated but merely made accessible to this function
+        // by scoping the variable inside a chain of functions.
+        // We could scope the data variable to the top-level of this self-invoking function
+        // by returning the data from the function in which it was made. 
+        // After you get a beta version working, create a new branch 
+        // and experiment with different solutions.
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
@@ -244,7 +265,7 @@
     if (clicked) {
       about.style.display = 'none';
       background.style.display = 'none';
-      button.style.background = 'rgb(0,128,0)'
+      button.style.background = 'rgba(75, 75, 75, 0.8)'
     } else {
       about.style.height = '60vh';
       about.style.display = 'inherit'

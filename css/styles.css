@@ -4,6 +4,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 100%;
     color: #3d3d3d;
+    
 }
 
 h1 {
@@ -36,6 +37,7 @@ h2 {
     bottom: 0;
     width: 100%;
     z-index: 10;
+    background-color: #111111;
 }
 
 /* Style button to show page layers. */
