@@ -34,15 +34,30 @@
       <span id="x">&times;</span>
 
       <h2>Info</h2>
-      <p>Info Goes Here!</p>
+      <p>For the purposes of this map, "tree cover" refers to natural or planted stands of trees that are at least 5
+        meters.<br>
+        It excludes tree stands in agricultural production systems (eg. fruit plantations and agroforestry systems) as
+        well as trees in urban parks and gardens.</p>
+      <p>Percentages are interpreted as "% of land area".</p>
 
       <h2>About</h2>
       <p>Tree cover data for this map taken from <a href="https://ourworldindata.org/forests">Our World in Data</a>.<br>
-        Country data for this map courtesy of <a href="https://datahub.io/core/geo-countries">DataHub</a>.</p>
+        Country data for this map courtesy of <a href="https://datahub.io/core/geo-countries">DataHub</a>.<br>
+        Background image source: <a
+          href="https://www.mnn.com/earth-matters/wilderness-resources/blogs/global-tree-cover-increased-7-over-35-years">Mother
+          Nature Network</a>.</p>
       <p>Map Authored By: Shan Huan Wu<br>
         See my projects on GitHub: <a href="https://github.com/swu-uky">swu-uky</a><br>
         Follow me on Instagram: <a href="https://instagram.com/meadowofhay">@meadowofhay</a></p>
     </div>
+  </div>
+
+  <!-- ui is outside of container-fluid and will be dynamically added to map -->
+  <div class="form-group mr-3 mt-3" id="dropdown-ui">
+    <select class="form-control bg-success text-white">
+      <option value="Percentage" selected>Percentage (%)</option>
+      <option value="Area">Area (sqkm)</option>
+    </select>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

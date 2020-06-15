@@ -5,12 +5,12 @@
     def: '+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs',
     resolutions: [32568, 16284, 8192, 4096, 2048],
     origin: [0, 0]
-   }
+  }
 
-  const crs = new L.Proj.CRS(robinson.epsg, robinson.def, { 
-    resolutions: robinson.resolutions, 
+  const crs = new L.Proj.CRS(robinson.epsg, robinson.def, {
+    resolutions: robinson.resolutions,
     origin: robinson.origin
-   })
+  })
 
   const options = {
     crs: crs,
@@ -22,13 +22,6 @@
   }
 
   const map = L.map('map', options);
-
-  const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19,
-    noWrap: true
-  }) //.addTo(map);
 
   const legendControl = L.control({
     position: 'topright'
@@ -72,7 +65,7 @@
 
   $.getJSON("data/countries.json", function (countries) {
 
-      Papa.parse('data/forest-area-percent2.csv', {
+      Papa.parse('data/forest-area-percent.csv', {
 
         download: true,
         header: true,
@@ -156,6 +149,7 @@
     map.setZoom(map.getZoom() - .2);
 
     updateMap(dataLayer, colorize, '1990');
+    addUI();
     createSliderUI(dataLayer, colorize, data); // Taking 'data' along to retain world information
   }
 
@@ -225,6 +219,25 @@
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
+  }
+
+  function addUI() {
+    // create the slider control
+    var selectControl = L.control({
+      position: "topright"
+    });
+
+    // when control is added
+    selectControl.onAdd = function () {
+      // get the element with id attribute of ui-controls
+      return L.DomUtil.get("dropdown-ui");
+    };
+    // add the control to the map
+    selectControl.addTo(map);
+
+    $('#dropdown-ui select').change(function () {
+      attributeValue = this.value;
+    });
   }
 
   /* --------------- Toggle on/off Information ---------------  */
