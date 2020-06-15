@@ -23,6 +23,10 @@
 
   const map = L.map('map', options);
 
+  L.control.zoom({
+    position: 'bottomright'
+  }).addTo(map);
+
   const legendControl = L.control({
     position: 'topright'
   });
@@ -209,7 +213,7 @@
       .on("input change", function () { // When user changes
         const currentYear = this.value; // Update the year
         $('.world h3 span').html(currentYear);
-        $('.world ul span').html(data.data[255][currentYear]); // Data finally used here!
+        $('.world ul span').html(data.data[256][currentYear]); // Data finally used here!
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
