@@ -163,19 +163,19 @@
         fillColor: colorize(Number(props[currentYear]))
       })
 
-      var popup = '';
+      var tooltip = '';
 
       if (props[currentYear] == "No Data") {
-        popup = `<b>${props["COUNTRY"]}</b><br>
+        tooltip = `<b>${props["COUNTRY"]}</b><br>
           No Data for ${currentYear}`;
       } else if (props[currentYear] == undefined) {
-        popup = "No Data";
+        tooltip = "No Data";
       } else {
-        popup = `<b>${props["COUNTRY"]}</b><br>
+        tooltip = `<b>${props["COUNTRY"]}</b><br>
         ${props[currentYear]}%`;
       }
 
-      layer.bindPopup(popup, {
+      layer.bindTooltip(tooltip, {
         sticky: true
       });
     })

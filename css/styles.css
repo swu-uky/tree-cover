@@ -163,7 +163,7 @@ label {
     box-shadow: 0 1px 3px rgb(0, 128, 0);
     border: 1px solid #008000;
     border-radius: 5px;
-    width: 250px;
+    width: 100%;
 }
 
 .legend h3 {
@@ -204,7 +204,7 @@ label {
     box-shadow: 0 1px 3px rgb(0, 128, 0);
     border: 1px solid #008000;
     border-radius: 5px;
-    width: 250px;
+    width: 100%;
 }
 
 .world h3 {
@@ -231,13 +231,6 @@ label {
 .world ul span {
     font-size: 1.2em;
     margin: 0 20px 0 0;
-}
-
-.dropdown {
-    position: absolute;
-    right: 1em;
-    top: 35%;
-    z-index: 150;
 }
 
 /* 
