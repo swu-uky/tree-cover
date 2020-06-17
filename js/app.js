@@ -1,5 +1,13 @@
 (function () {
 
+  // Why not swap up the background image with different scenes around the world.
+  const backgroundImg = document.querySelector("#map")
+  const backgroundImages = ['tree-cover.jpg', 'tree-cover2.jpg', 'tree-cover3.jpg']
+  console.log(Math.floor(Math.random() * backgroundImages.length))
+  backgroundImg.style.backgroundImage = "url()"
+  console.log(backgroundImg.style)
+  
+
   const robinson = {
     epsg: 'EPSG:54030',
     def: '+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs',
