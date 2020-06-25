@@ -129,7 +129,6 @@
           fillColor: '#1f78b4'
         };
       },
-
       onEachFeature: function (feature, layer) {
         layer.on('mouseover', function () {
           layer.setStyle({
@@ -167,16 +166,24 @@
       })
 
       var tooltip = '';
+      var trend = '<br><b>Trend (1990 - 2015):</b><br>';
+      var result = '';
 
       if (props[currentYear] == "No Data") {
-        tooltip = `<b>${props["COUNTRY"]}</b><br>
+        tooltip = `<b>${props["COUNTRY"]}:</b><br>
           No Data for ${currentYear}`;
-      } else if (props[currentYear] == undefined) {
-        tooltip = "No Data";
       } else {
-        tooltip = `<b>${props["COUNTRY"]}</b><br>
-        ${props[currentYear]}%`;
+        tooltip = `<b>${props["COUNTRY"]}:</b><br>` + 
+        (Number(props[currentYear])).toFixed(4) + `%`;
       }
+
+      if (props[1990] == "No Data") {
+        result = 'Insufficient Data';
+      } else {
+        result = (props[2015] - props[1990]).toFixed(4) + '%';
+      }
+
+      tooltip = tooltip + '<br>' + trend + result;
 
       layer.bindTooltip(tooltip, {
         sticky: true
