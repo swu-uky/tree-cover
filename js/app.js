@@ -224,7 +224,7 @@
       .on("input change", function () { // When user changes
         const currentYear = this.value; // Update the year
         $('.world h3 span').html(currentYear);
-        $('.world ul span').html(data.data[264][currentYear]); // Data finally used here!
+        $('.world ul span').html(data.data[267][currentYear]); // Data finally used here!
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
