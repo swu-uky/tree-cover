@@ -165,16 +165,15 @@
         fillColor: colorize(Number(props[currentYear]))
       })
 
-      var tooltip = '';
+      var tooltip = `<b>${props["COUNTRY"]} (${currentYear}):</b><br>`;
+      var data = '';
       var trend = '<br><b>Trend (1990 - 2015):</b><br>';
       var result = '';
 
       if (props[currentYear] == "No Data") {
-        tooltip = `<b>${props["COUNTRY"]}:</b><br>
-          No Data for ${currentYear}`;
+        data = `No Data for ${currentYear}`;
       } else {
-        tooltip = `<b>${props["COUNTRY"]}:</b><br>` + 
-        (Number(props[currentYear])).toFixed(4) + `%`;
+        data = (Number(props[currentYear])).toFixed(4) + `%`;
       }
 
       if (props[1990] == "No Data") {
@@ -183,7 +182,13 @@
         result = (props[2015] - props[1990]).toFixed(4) + '%';
       }
 
-      tooltip = tooltip + '<br>' + trend + result;
+      if ((props[2015] - props[1990]) > 0) {
+        tooltip = tooltip + data.fontsize(5) + '<br>' + trend + result.fontcolor('green').fontsize(5);
+      } else if ((props[2015] - props[1990]) < 0) {
+        tooltip = tooltip + data.fontsize(5) + '<br>' + trend + result.fontcolor('red').fontsize(5);
+      } else {
+        tooltip = tooltip + data.fontsize(5) + '<br>' + trend + result.fontsize(5);
+      }
 
       layer.bindTooltip(tooltip, {
         sticky: true
