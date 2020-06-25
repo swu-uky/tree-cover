@@ -153,7 +153,6 @@
     map.setZoom(map.getZoom() - .2);
 
     updateMap(dataLayer, colorize, '1990');
-    addUI();
     createSliderUI(dataLayer, colorize, data); // Taking 'data' along to retain world information
   }
 
@@ -217,25 +216,6 @@
         $('.legend h3 span').html(currentYear);
         updateMap(dataLayer, colorize, currentYear);
       });
-  }
-
-  function addUI() {
-    // create the slider control
-    var selectControl = L.control({
-      position: "topright"
-    });
-
-    // when control is added
-    selectControl.onAdd = function () {
-      // get the element with id attribute of ui-controls
-      return L.DomUtil.get("dropdown-ui");
-    };
-    // add the control to the map
-    selectControl.addTo(map);
-
-    $('#dropdown-ui select').change(function () {
-      attributeValue = this.value;
-    });
   }
 
   /* --------------- Toggle on/off Information ---------------  */
