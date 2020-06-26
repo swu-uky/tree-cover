@@ -190,6 +190,12 @@
         tooltip = tooltip + data.fontsize(5) + '<br>' + trend + result.fontsize(5);
       }
 
+      if (props["COUNTRY"] == 'Baikonur Cosmodrome') {
+        tooltip = `<b>${props["COUNTRY"]}</b><br>`
+        + "The world's largest spaceport.<br>It is located in Kazakhstan but is owned and operated by Russia.<br>"
+        + `<img src="data/baikonur_cosmodrome.jpg" width=300px height=200px><br>` + "Image taken from Wikipedia.";
+      }
+
       layer.bindTooltip(tooltip, {
         sticky: true
       });
